@@ -9,6 +9,10 @@
     padding-left: 20px;
 }
 
-.title{
-    margin-top: 20px;
+.header-title{
+  margin-top: 20px;
+}
+
+.button{
+  padding: 10px;
 }

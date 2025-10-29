@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Produtos from "./pages/Products/Produtos";
 import Promocoes from "./pages/sales/Promocoes";
-import Usuarios from "./pages/users/Usuarios";
+import Usuarios from "./pages/users";
 
 export default function App() {
   return (
