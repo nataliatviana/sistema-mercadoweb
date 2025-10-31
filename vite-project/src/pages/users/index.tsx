@@ -5,12 +5,15 @@ import "./index.css";
 import { GrFormView } from "react-icons/gr";
 import { useState } from "react";
 import Modal from "../../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Usuarios() {
 
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+
+  const navigate = useNavigate();
 
   const openModal = (user: User) => {
     setUser(user);
@@ -26,7 +29,7 @@ export default function Usuarios() {
       <main className="flex-1 p-8 flex flex-col gap-10">
         <div className="flex items-center justify-around header-title">
           <h1 className="text-center text-xl font-semibold title">Usuários</h1>
-          <button className="btn btn-active button">Adicionar usuário</button>
+          <button onClick={()=> navigate("/usuarios/novo")} className="btn btn-active button">Adicionar usuário</button>
         </div>
 
         {isOpenModal && (
@@ -66,8 +69,8 @@ export default function Usuarios() {
                   <td><input size={25} type="checkbox" checked={user.isActive} className="toggle" /></td>
                   <td className="flex gap-5">
                     <MdDelete onClick={() => openModal(user)} cursor={"pointer"} size={25} />
-                    <MdModeEditOutline onClick={() => console.log("editar user")} cursor={"pointer"} size={25} />
-                    <GrFormView onClick={() => console.log("view user")} cursor={"pointer"} size={25} />
+                    <MdModeEditOutline onClick={()=> navigate(`/usuarios/edit/${user.id}`)} cursor={"pointer"} size={25} />
+                    <GrFormView onClick={() => navigate(`/usuarios/view/${user.id}`)} cursor={"pointer"} size={25} />
                   </td>
                 </tr>
               ))}
