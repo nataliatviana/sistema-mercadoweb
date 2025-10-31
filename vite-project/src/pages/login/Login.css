@@ -90,17 +90,3 @@ body {
     background-color: #2c74b3;
 }
 
-.signup-link {
-    font-size: 14px;
-    color: #718096;
-}
-
-.signup-link a {
-    color: #3182ce;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.signup-link a:hover {
-    text-decoration: underline;
-}

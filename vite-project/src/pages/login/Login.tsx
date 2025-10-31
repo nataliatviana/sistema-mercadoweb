@@ -10,8 +10,8 @@ export default function Login() {
   const login = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email === 'adminsupermercado@gmail.com' && senha === '123') {
-      navigate('/produtos');
+    if (email === 'rodrigo@example.com' && senha === '123') {
+      navigate('/usuarios');
     } else {
       alert('Email ou senha incorretos');
     }
@@ -46,10 +46,6 @@ export default function Login() {
             Entrar
           </button>
         </form>
-
-        <p className="signup-link">
-          Ainda não tem conta? <a href="#">Cadastre-se</a>
-        </p>
       </div>
     </div>
   );
