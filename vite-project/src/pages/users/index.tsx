@@ -29,7 +29,7 @@ export default function Usuarios() {
       <main className="flex-1 p-8 flex flex-col gap-10">
         <div className="flex items-center justify-around header-title">
           <h1 className="text-center text-xl font-semibold title">Usuários</h1>
-          <button onClick={()=> navigate("/usuarios/novo")} className="btn btn-active button">Adicionar usuário</button>
+          <button onClick={()=> navigate("/usuarios/novo")} className="btn btn-primary button">Adicionar usuário</button>
         </div>
 
         {isOpenModal && (
@@ -67,7 +67,7 @@ export default function Usuarios() {
                   <td>{user.role}</td>
                   <td>{user.email}</td>
                   <td><input size={25} type="checkbox" checked={user.isActive} className="toggle" /></td>
-                  <td className="flex gap-5">
+                  <td className="flex gap-5 justify-center">
                     <MdDelete onClick={() => openModal(user)} cursor={"pointer"} size={25} />
                     <MdModeEditOutline onClick={()=> navigate(`/usuarios/edit/${user.id}`)} cursor={"pointer"} size={25} />
                     <GrFormView onClick={() => navigate(`/usuarios/view/${user.id}`)} cursor={"pointer"} size={25} />

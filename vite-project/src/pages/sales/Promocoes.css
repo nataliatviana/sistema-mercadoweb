@@ -1,6 +1,11 @@
 .table th,
 .table td {
   text-align: center;
+  padding: 10px;
+}
+
+.badge{
+  padding: 10px;
 }
 
 .alert {

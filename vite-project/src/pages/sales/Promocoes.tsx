@@ -42,8 +42,8 @@ export default function Promocoes() {
     <div className="flex min-h-screen">
       <LeftBar />
 
-      <main className="flex-1 p-8 flex flex-col">
-        <h1 className="text-2xl font-semibold mb-6">Promoções</h1>
+      <main className="flex-1 p-8 flex flex-col gap-4">
+        <h1 className="text-2xl font-semibold text-center title">Promoções</h1>
 
         {mensagem && (
           <div className="alert alert-success mb-4 text-center font-medium">
@@ -92,7 +92,7 @@ export default function Promocoes() {
                       {p.isPromo ? "Sim" : "Não"}
                     </span>
                   </td>
-                  <td className="flex gap-2">
+                  <td className="flex gap-2 justify-center">
                     <button
                       className="btn btn-sm btn-primary flex items-center gap-1"
                       onClick={() => aplicarPromocao(p.id)}
