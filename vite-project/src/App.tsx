@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
-import Produtos from "./pages/Products/Produtos"; // tela de listagem de produtos
-import NewProduct from "./pages/Products/NewProduct"; // criar produto
-import EditProduct from "./pages/Products/EditProduct"; // editar produto
+import Produtos from "./pages/Products/Produtos";
+import NewProduct from "./pages/Products/NewProduct";
+import EditProduct from "./pages/Products/EditProduct";
 import Promocoes from "./pages/sales/Promocoes";
+import ViewProduct from "./pages/Products/View/ViewProduct";
 import Usuarios from "./pages/users";
 import NewUser from "./pages/users/new";
 import EditUser from "./pages/users/edit";
@@ -23,6 +24,7 @@ export default function App() {
 
       {/* Promoções */}
       <Route path="/promocoes" element={<Promocoes />} />
+      <Route path="/produtos/view/:id" element={<ViewProduct />} />
 
       {/* Usuários */}
       <Route path="/usuarios" element={<Usuarios />} />
