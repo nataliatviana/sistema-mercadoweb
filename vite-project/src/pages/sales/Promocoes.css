@@ -1,0 +1,11 @@
+.table th,
+.table td {
+  text-align: center;
+}
+
+.alert {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}

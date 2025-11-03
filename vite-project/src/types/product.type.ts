@@ -5,6 +5,7 @@ export interface Product {
   stock: number;
   category: string;
   isActive: boolean;
+  isPromo?: boolean;
 }
 
 export const products: Product[] = [
