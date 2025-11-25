@@ -7,13 +7,35 @@ export default function Login() {
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
-  const login = (e: React.FormEvent) => {
+  const login = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email === 'rodrigo@example.com' && senha === '123') {
-      navigate('/usuarios');
-    } else {
-      alert('Email ou senha incorretos');
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: senha
+        })
+      });
+
+      if (!response.ok) {
+        alert("Email ou senha incorretos");
+        return;
+      }
+
+      const data = await response.json();
+
+      localStorage.setItem("token", data.acessToken);
+
+      navigate("/usuarios");
+
+    } catch (error) {
+      alert("Erro ao tentar fazer login");
+      console.error(error);
     }
   };
 
