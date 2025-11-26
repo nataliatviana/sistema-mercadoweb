@@ -90,3 +90,33 @@ body {
     background-color: #2c74b3;
 }
 
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+.register-link span {
+    color: #6c63ff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.register-link span:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    background-color: #ffe1e1;
+    color: #b30000;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #ffb3b3;
+    animation: fadeIn 0.3s ease;
+}
+
+
+

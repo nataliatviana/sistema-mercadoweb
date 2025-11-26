@@ -9,6 +9,7 @@ import Usuarios from "./pages/users";
 import NewUser from "./pages/users/new";
 import EditUser from "./pages/users/edit";
 import ViewUser from "./pages/users/view";
+import Register from "./pages/register/Register";
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
       {/* Login */}
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
+
+      {/* Register */}
+      <Route path="/register" element={<Register />} />
 
       {/* Produtos */}
       <Route path="/produtos" element={<Produtos />} />

@@ -1,40 +1,41 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
+
   const navigate = useNavigate();
 
-  const login = async (e: React.FormEvent) => {
+  const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErro("");
 
     try {
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
-          password: senha
-        })
+          password: senha,
+        }),
       });
 
       if (!response.ok) {
-        alert("Email ou senha incorretos");
+        setErro("Email ou senha incorretos.");
         return;
       }
 
       const data = await response.json();
-
       localStorage.setItem("token", data.acessToken);
-
       navigate("/usuarios");
 
     } catch (error) {
-      alert("Erro ao tentar fazer login");
+      setErro("Erro ao tentar fazer login.");
       console.error(error);
     }
   };
@@ -47,6 +48,8 @@ export default function Login() {
           É um grande prazer tê-lo <br /> conosco!
         </p>
 
+        {erro && <p className="error-message">{erro}</p>}
+
         <form onSubmit={login} className="login-form">
           <input
             type="email"
@@ -56,6 +59,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+
           <input
             type="password"
             placeholder="Digite sua senha"
@@ -64,10 +68,16 @@ export default function Login() {
             onChange={(e) => setSenha(e.target.value)}
             required
           />
+
           <button type="submit" className="login-button">
             Entrar
           </button>
         </form>
+
+        <p className="register-link">
+          Não tem conta?{" "}
+          <span onClick={() => navigate("/register")}>Cadastre-se</span>
+        </p>
       </div>
     </div>
   );
