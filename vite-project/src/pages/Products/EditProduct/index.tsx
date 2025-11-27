@@ -1,21 +1,21 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import ProductForm from "../FormProduct";
-import { products, type Product } from "../../../types/product.type.ts";
 
 export default function EditProduct() {
     const { id } = useParams();
+    const [product, setProduct] = useState<any>(null);
 
-    const product = products.find(p => p.id.toString() === id);
+    useEffect(() => {
+        const fetchProduct = async () => {
+        const res = await fetch(`http://localhost:3000/products/${id}`);
+        const data = await res.json();
+        setProduct(data);
+        };
+        fetchProduct();
+    }, [id]);
 
-    const onSubmit = (data: Product) => {
-        console.log(data);
-    }
+    if (!product) return <p>Carregando...</p>;
 
-    return (
-        <ProductForm 
-            title="Editar produto"  
-            onSubmit={(data: Product) => onSubmit(data)} 
-            product={product}
-        />
-    )
+    return <ProductForm title="Editar Produto" product={product} />;
 }
