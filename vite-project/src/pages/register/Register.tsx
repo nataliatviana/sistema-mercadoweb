@@ -19,7 +19,7 @@ const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     setSucesso("");
 
     try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch("http://localhost:3000/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
