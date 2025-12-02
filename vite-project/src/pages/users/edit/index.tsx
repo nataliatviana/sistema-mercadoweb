@@ -1,20 +1,29 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import UserForm from "../FormUser";
-import { users, type User } from "../../../types/user.type";
+import { getUserById } from "../../../api/user.api";
 
-export default function EditUser(){
+export default function ViewUser() {
+    const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
+    const [user, setUser] = useState<any>(null);
 
-    const {id} = useParams();
+    useEffect(() => {
+        if (id) {
+        const token = localStorage.getItem("token") || "";
+        getUserById(id, token)
+            .then(setUser)
+            .catch(err => alert("Erro ao buscar usuário: " + err.message));
+        }
+    }, [id]);
 
-    const user = users.find(u=> u.id.toString() === id);
-
-    const onSubmit = (data:User)=>{
-        console.log(data);
-    }
-
-    return (
-        <UserForm title="Editar funcionário"  onSubmit={(data:User)=> onSubmit(data)} user={user}>
-            
-        </UserForm>
-    )
+    return user ? (
+        <UserForm
+        title="Visualizar Usuário"
+        user={user}
+        onSubmit={undefined}
+        />
+    ) : (
+        <p>Carregando usuário...</p>
+    );
 }
